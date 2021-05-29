@@ -7,7 +7,7 @@ export default function UploadForm() {
 
     const types = ['image/png', 'image/jpeg'];
 
-    const changeHandler = (event) => {
+    const handleChange = (event) => {
         const selected = event.target.files[0];
 
         if (selected && types.includes(selected?.type)) {
@@ -21,7 +21,10 @@ export default function UploadForm() {
 
     return (
         <form>
-            <input onChange={changeHandler} type="file" accept="image/*" />
+            <label>
+                <input type="file" onChange={handleChange} accept="image/*" />
+                <span>+</span>
+            </label>
             <div className="output">
                 {error && <div className="error">{error}</div>}
                 {file && <div>{file.name}</div>}
